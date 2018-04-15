@@ -11,7 +11,7 @@ import argparse
 
 import tensorflow as tf
 
-import model
+from trainer import model
 
 
 def _parse_arguments(argv):
