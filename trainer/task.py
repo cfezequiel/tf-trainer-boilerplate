@@ -19,9 +19,6 @@ def _parse_arguments(argv):
   parser.add_argument(
       '--job-dir',
       help='Output path for ML training job.')
-  parser.add_argument(
-      '--hparams',
-      help='Comma separated list of "name=value" pairs of hyperparameters.')
 
    # Insert other arguments here
 
