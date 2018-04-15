@@ -1,7 +1,4 @@
-"""ML Trainer: Insert one line documentation here.
-
-Insert detailed description here.
-"""
+"""Run model training and evaluation."""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -19,6 +16,9 @@ def _parse_arguments(argv):
   parser.add_argument(
       '--job-dir',
       help='Output path for ML training job.')
+  parser.add_argument(
+      '--hparams',
+      help='Model training hyperparameters as comma-separated "key=value" pairs.')
 
    # Insert other arguments here
 
@@ -42,6 +42,7 @@ def main(argv):
   # Do stuff with flags
 
   hparams = tf.contrib.training.HParams(**flags.__dict__)
+  hparams.parse(flags.hparams)
   run_experiment(hparams)
 
 
