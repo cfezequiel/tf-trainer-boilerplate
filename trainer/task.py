@@ -40,6 +40,7 @@ def run_experiment(hparams):
 
 def main(argv):
   flags = _parse_arguments(argv[1:])
+  tf.logging.set_verbosity(tf.logging.INFO)
 
   # Do stuff with flags
 
