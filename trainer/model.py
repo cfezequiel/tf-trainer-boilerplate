@@ -10,17 +10,22 @@ from __future__ import print_function
 import tensorflow as tf
 
 
-def _model_fn(features, labels, mode):
-  """Returns a model function to pass to tf.estimator.Estimator."""
+def get_model_fn(hparams):
+  """Returns a model_fn constructed from hyperparameters, if any."""
 
-  # Insert model description here
+  def model_fn(features, labels, mode):
+    """Model function to pass to tf.estimator.Estimator."""
 
-  # Refer to the following link for other how to return EstimatorSpec:
-  # https://www.tensorflow.org/api_docs/python/tf/estimator/EstimatorSpec
-  return tf.estimator.EstimatorSpec(mode)
+    # Insert model description here
+
+    # Refer to the following link for other how to return EstimatorSpec:
+    # https://www.tensorflow.org/api_docs/python/tf/estimator/EstimatorSpec
+    return tf.estimator.EstimatorSpec(mode)
+
+  return model_fn
 
 
-def build_estimator(run_config):
+def build_estimator(run_config, hparams):
   return tf.estimator.Estimator(
-      model_fn=_model_fn,
+      model_fn=get_model_fn(hparams),
       config=run_config)
